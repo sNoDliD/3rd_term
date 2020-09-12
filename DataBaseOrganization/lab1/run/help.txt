@@ -1,0 +1,17 @@
+========================MANUAL========================
+
+        Available tables:
+user, lab, class, teacher, userStatus, choice
+
+        Available commands:
+update, delete, get, insert
+
+To do something, please, write <command> <table>
+
+        Example:
+insert teacher
+get class
+delete userStatus
+update lab
+
+======================================================

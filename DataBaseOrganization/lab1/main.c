@@ -1,36 +1,48 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-struct NodeStruct{
-    struct NodeStruct* next;
-    int data;
-};
-
-typedef struct NodeStruct* List;
-typedef struct NodeStruct Node;
 
 
-/// It is my function
-/// \param a ashka
-/// \param b beshka
-/// \param c tseshka
-/// \return abetseshka
-int fooo(int a, int b, int c){
-    return a*b*c;
-}
+//#include <sys/stat.h>
+//mkdir("/some/directory", 0700);
+
+void printHelp();
+void processCommands();
+
 
 int main() {
-    printf("%d", fooo(3,5,7));
-//    List l = malloc(sizeof(Node));
-//    l->data = 55;
-//    l->next = malloc(sizeof(Node));
-//    l->next->data = 66;
-//    l->next->next = NULL;
-//    for(Node* it = l; it; it=it->next){
-//        printf("%d\n", it->data);
-//    }
-//    free(l);
-//    l = NULL;
+    printHelp();
+    processCommands();
 
     return 0;
+}
+
+
+void printHelp() {
+    FILE* help_file = NULL;
+    help_file = fopen("run/help.txt", "r");
+
+    if (help_file){
+        char buff[255];
+        while (1){
+            fgets(buff, sizeof(buff), (FILE*)help_file);
+            if (feof(help_file)){
+                break;
+            }
+            printf("%s", buff );
+        }
+        fclose(help_file);
+    } else{
+        printf("%s", "can't find help file\n");
+    }
+}
+
+void processCommands(){
+    char command[8];
+    char table[16];
+
+    while (1){
+        int count = scanf("%s %s", command, table);
+        if (count != 2){
+            break;
+        }
+    }
 }
