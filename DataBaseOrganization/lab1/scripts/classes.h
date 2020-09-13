@@ -1,6 +1,19 @@
 #ifndef LAB1_CLASSES_H
 #define LAB1_CLASSES_H
 
+enum TABLE_ENUM{
+    LAB,
+    TEACHER,
+    CLASS,
+    USER_STATUS,
+    USER,
+    CHOICE,
+
+    KEY_ERROR,
+};
+typedef enum TABLE_ENUM TABLE;
+
+
 struct IndexStruct{
     int id;
     int address;
