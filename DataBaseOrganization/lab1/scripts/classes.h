@@ -16,7 +16,7 @@ typedef enum TABLE_ENUM TABLE;
 
 struct IndexStruct{
     int id;
-    int address;
+    int row;
 };
 typedef struct IndexStruct Index;
 
@@ -26,6 +26,11 @@ struct TeacherStruct{
     char name[32];
 };
 typedef struct TeacherStruct Teacher;
+void printTeachers();
+void insertTeacherStruct(Teacher);
+Teacher getTeacherStruct(int id);
+void deleteTeacherStruct(Teacher);
+void updateTeacherStruct(Teacher);
 
 
 struct ClassStruct{
@@ -34,6 +39,11 @@ struct ClassStruct{
     int teacher_id;
 };
 typedef struct ClassStruct Class;
+void printClasses();
+void insertClassStruct(Class);
+Class getClassStruct(int id);
+void deleteClassStruct(Class);
+void updateClassStruct(Class);
 
 
 struct UserStatusStruct{
@@ -41,6 +51,11 @@ struct UserStatusStruct{
     char name[32];
 };
 typedef struct UserStatusStruct UserStatus;
+void printUserStatuses();
+void insertUserStatusStruct(UserStatus);
+UserStatus getUserStatusStruct(int id);
+void deleteUserStatusStruct(UserStatus);
+void updateUserStatusStruct(UserStatus);
 
 
 struct UserStruct{
@@ -49,6 +64,11 @@ struct UserStruct{
     int status_id;
 };
 typedef struct UserStruct User;
+void printUsers();
+void insertUserStruct(User);
+User getUserStruct(int id);
+void deleteUserStruct(User);
+void updateUserStruct(User);
 
 
 struct LabStruct{
@@ -58,6 +78,11 @@ struct LabStruct{
     int class_id;
 };
 typedef struct LabStruct Lab;
+void printLabs();
+void insertLabStruct(UserStatus);
+UserStatus getLabStruct(int id);
+void deleteLabStruct(UserStatus);
+void updateLabStruct(UserStatus);
 
 
 struct ChoiceStruct{
@@ -66,5 +91,10 @@ struct ChoiceStruct{
     char variant[32];
 };
 typedef struct ChoiceStruct Choice;
+void printChoices();
+void insertChoiceStruct(Choice);
+Choice getChoiceStruct(int id);
+void deleteChoiceStruct(Choice);
+void updateChoiceStruct(Choice);
 
 #endif //LAB1_CLASSES_H

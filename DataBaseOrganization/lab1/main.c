@@ -1,21 +1,51 @@
 #include <stdio.h>
 #include <string.h>
 #include "scripts/classes.h"
-
-//#include <sys/stat.h>
-//mkdir("/some/directory", 0700);
+#include "scripts/common.h"
 
 void printHelp();
 void processCommands();
-void doCommand(char* command, char* table);
+int doCommand(char* command, char* table);
 
 TABLE enumTable(char* table);
-void update(char* table);
-void get(char* table);
-void insert(char* table);
-void delete(char* table);
+int update(char* table);
+int get(char* table);
+int insert(char* table);
+int delete(char* table);
+
+
+int insertTeacher();
+int getTeacher();
+int deleteTeacher();
+int updateTeacher();
+
+int insertLab();
+int getLab();
+int deleteLab();
+int updateLab();
+
+int insertUserStatus();
+int getUserStatus();
+int deleteUserStatus();
+int updateUserStatus();
+
+int insertClass();
+int getClass();
+int deleteClass();
+int updateClass();
+
+int insertUser();
+int getUser();
+int deleteUser();
+int updateUser();
+
+int insertChoice();
+int getChoice();
+int deleteChoice();
+int updateChoice();
 
 int main() {
+//    int id = nextId("user");
     printHelp();
     processCommands();
 
@@ -48,6 +78,7 @@ void processCommands(){
     char table[32];
 
     while (1){
+        printf("Your query: ");
         int count = scanf("%s%s", command, table);
 
         if (strcasecmp(command, "end") == 0) {
@@ -58,13 +89,15 @@ void processCommands(){
             printf("Please, enter command and table again\n");
         }
         else{
-            doCommand(command, table);
+            if (doCommand(command, table) != 0){
+                printf("Invalid input\n");
+            }
         }
     }
 }
 
 
-void doCommand(char* command, char* table) {
+int doCommand(char* command, char* table) {
     if (strcasecmp(command, "update")==0){
         return update(table);
     }
@@ -77,7 +110,8 @@ void doCommand(char* command, char* table) {
     if (strcasecmp(command, "insert")==0){
         return insert(table);
     }
-    printf("%s", "Invalid command\n");
+
+    return -1;
 }
 
 
@@ -105,36 +139,82 @@ TABLE enumTable(char *table) {
 }
 
 
-void update(char *table) {
-
-}
-
-
-void get(char *table) {
-
-}
-
-
-void insert(char *table) {
+int update(char *table) {
     switch (enumTable(table)) {
         case LAB:
-            break;
+            return updateLab();
         case TEACHER:
-            break;
+            return updateTeacher();
         case CLASS:
-            break;
+            return updateClass();
         case USER_STATUS:
-            break;
+            return updateUserStatus();
         case USER:
-            break;
+            return updateUser();
         case CHOICE:
-            break;
+            return updateChoice();
         case KEY_ERROR:
-            break;
+            return -1;
     }
 }
 
 
-void delete(char *table) {
+int get(char *table) {
+    switch (enumTable(table)) {
+        case LAB:
+            return getLab();
+        case TEACHER:
+            return getTeacher();
+        case CLASS:
+            return getClass();
+        case USER_STATUS:
+            return getUserStatus();
+        case USER:
+            return getUser();
+        case CHOICE:
+            return getChoice();
+        case KEY_ERROR:
+            return -1;
+    }
+}
 
+
+int insert(char *table) {
+    switch (enumTable(table)) {
+        case LAB:
+            return insertLab();
+        case TEACHER:
+            return insertTeacher();
+        case CLASS:
+            return insertClass();
+        case USER_STATUS:
+            return insertUserStatus();
+        case USER:
+            return insertUser();
+        case CHOICE:
+            return insertChoice();
+        case KEY_ERROR:
+            return -1;
+    }
+}
+
+
+
+int delete(char *table) {
+    switch (enumTable(table)) {
+        case LAB:
+            return deleteLab();
+        case TEACHER:
+            return deleteTeacher();
+        case CLASS:
+            return deleteClass();
+        case USER_STATUS:
+            return deleteUserStatus();
+        case USER:
+            return deleteUser();
+        case CHOICE:
+            return deleteChoice();
+        case KEY_ERROR:
+            return -1;
+    }
 }
