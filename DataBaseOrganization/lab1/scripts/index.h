@@ -1,10 +1,17 @@
-#ifndef LAB1_COMMON_H
-#define LAB1_COMMON_H
+#ifndef LAB1_INDEX_H
+#define LAB1_INDEX_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/stat.h>
 #include <string.h>
-#include "classes.h"
+
+
+struct IndexStruct{
+    int id;
+    int row;
+};
+typedef struct IndexStruct Index;
 
 
 size_t nextId(char* table){
@@ -29,5 +36,4 @@ size_t nextId(char* table){
     return place.id + 1;
 }
 
-
-#endif //LAB1_COMMON_H
+#endif //LAB1_INDEX_H

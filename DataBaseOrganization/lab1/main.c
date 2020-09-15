@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "scripts/classes.h"
-#include "scripts/common.h"
 
 void printHelp();
 void processCommands();
@@ -13,36 +12,6 @@ int get(char* table);
 int insert(char* table);
 int delete(char* table);
 
-
-int insertTeacher();
-int getTeacher();
-int deleteTeacher();
-int updateTeacher();
-
-int insertLab();
-int getLab();
-int deleteLab();
-int updateLab();
-
-int insertUserStatus();
-int getUserStatus();
-int deleteUserStatus();
-int updateUserStatus();
-
-int insertClass();
-int getClass();
-int deleteClass();
-int updateClass();
-
-int insertUser();
-int getUser();
-int deleteUser();
-int updateUser();
-
-int insertChoice();
-int getChoice();
-int deleteChoice();
-int updateChoice();
 
 int main() {
 //    int id = nextId("user");
@@ -142,17 +111,17 @@ TABLE enumTable(char *table) {
 int update(char *table) {
     switch (enumTable(table)) {
         case LAB:
-            return updateLab();
+            return 0;
         case TEACHER:
-            return updateTeacher();
+            return 0;
         case CLASS:
-            return updateClass();
+            return 0;
         case USER_STATUS:
-            return updateUserStatus();
+            return 0;
         case USER:
-            return updateUser();
+            return 0;
         case CHOICE:
-            return updateChoice();
+            return 0;
         case KEY_ERROR:
             return -1;
     }
@@ -162,17 +131,17 @@ int update(char *table) {
 int get(char *table) {
     switch (enumTable(table)) {
         case LAB:
-            return getLab();
+            return 0;
         case TEACHER:
-            return getTeacher();
+            return 0;
         case CLASS:
-            return getClass();
+            return 0;
         case USER_STATUS:
-            return getUserStatus();
+            return 0;
         case USER:
-            return getUser();
+            return 0;
         case CHOICE:
-            return getChoice();
+            return 0;
         case KEY_ERROR:
             return -1;
     }
@@ -182,17 +151,17 @@ int get(char *table) {
 int insert(char *table) {
     switch (enumTable(table)) {
         case LAB:
-            return insertLab();
+            return 0;
         case TEACHER:
-            return insertTeacher();
+            return 0;
         case CLASS:
-            return insertClass();
+            return 0;
         case USER_STATUS:
-            return insertUserStatus();
+            return 0;
         case USER:
-            return insertUser();
+            return 0;
         case CHOICE:
-            return insertChoice();
+            return 0;
         case KEY_ERROR:
             return -1;
     }
@@ -203,17 +172,17 @@ int insert(char *table) {
 int delete(char *table) {
     switch (enumTable(table)) {
         case LAB:
-            return deleteLab();
+            return 0;
         case TEACHER:
-            return deleteTeacher();
+            return 0;
         case CLASS:
-            return deleteClass();
+            return 0;
         case USER_STATUS:
-            return deleteUserStatus();
+            return 0;
         case USER:
-            return deleteUser();
+            return 0;
         case CHOICE:
-            return deleteChoice();
+            return 0;
         case KEY_ERROR:
             return -1;
     }
