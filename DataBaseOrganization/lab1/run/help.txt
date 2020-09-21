@@ -1,17 +1,15 @@
 ========================MANUAL========================
 
-        Available tables:
-user, lab, class, teacher, userStatus, choice
+To do something, please, write command
 
         Available commands:
-update, delete, get, insert
-
-To do something, please, write <command> <table>
+update_m, delete_m, get_m, insert_m, print_m, count_m
+update_s, delete_s, get_s, insert_s, print_s, count_s
 
         Example:
-insert teacher
-get class
-delete userStatus
-update lab
+insert_m
+insert_s
+get_s
+delete_m
 
 ======================================================
