@@ -8,23 +8,8 @@ typedef struct
     char curator[64];
 } Group;
 
-//int index_m(int id){
-//    int size = 5;
-//    int borders[2] = {0, size - 1};
-//    int middle;
-//    while (borders[0] <= borders[1]){
-//        middle = (borders[0] + borders[1]) / 2;
-//
-//        if (id == arr[middle]){
-//            return middle;
-//        }
-//        borders[id < arr[middle]] = middle + 1 - 2 * (x < arr[middle]);
-//    }
-//
-//    return -1 - (middle + 1 * (arr[middle] < x));
-//}
 
-Group get_m(){
+Group get_m(int id){
 
 }
 
@@ -33,8 +18,23 @@ void print_m(){
 }
 
 
-void insert_m(Group group) {
+void insert_m() {
+    Group group;
+    int id;
+    char curator[64];
+    char name[32];
 
+    while (1){
+        scanf("%i", &id);
+        if (get_index_by_id("groups.ind", id).id < 0){
+            break;
+        }
+        printf("group id must be unique!\nTry again: ");
+    }
+    scanf("%s%s", curator, name);
+    strncpy(group.name, name, sizeof(name));
+    strncpy(group.curator, curator, sizeof(name));
+    group.id = id;
 }
 
 
@@ -49,11 +49,7 @@ void update_m(Group group){
 
 
 int count_m(){
-    FILE* file = fopen("run/tables/groups.ind", "a+");
-    if (file){
-        fclose(file);
-    }
-    return 0;
+    return count_rows("groups.ind");
 }
 
 #endif //LAB1_MASTER_H

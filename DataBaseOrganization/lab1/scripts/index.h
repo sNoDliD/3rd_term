@@ -13,8 +13,8 @@ typedef struct {
 } Index;
 
 
-long int file_size(char* file_name){
-    FILE* fp = fopen(file_name, "r");
+int file_size(char* file_name){
+    FILE* fp = fopen(file_name, "rb");
 
     if (fp == NULL) {
         return -1;
@@ -22,11 +22,66 @@ long int file_size(char* file_name){
 
     fseek(fp, 0L, SEEK_END);
 
-    long int res = ftell(fp);
+    int res = (int) ftell(fp);
     fclose(fp);
     return res;
 }
 
+
+int count_rows(char* file_name){
+    return file_size(file_name) / (int) sizeof(Index);
+}
+
+
+Index get_index_by_row(char* file_name, int row){
+    Index index;
+    FILE* fp = fopen(file_name, "rb");
+
+    fseek(fp, 0L, SEEK_END);
+
+    int res = (int) ftell(fp);
+    fclose(fp);
+    return index;
+}
+
+
+int b_search(char* file_name, int id){
+    int size = count_rows(file_name);
+    int borders[2] = {0, size - 1};
+    int middle = 0;
+    Index index;
+    index.id = -1;
+
+    while (borders[0] <= borders[1]){
+        middle = (borders[0] + borders[1]) / 2;
+
+        index = get_index_by_row(file_name, middle);
+        if (id == index.id){
+            return middle;
+        }
+        borders[id < index.id] = middle + 1 - 2 * (id < index.id);
+    }
+
+    return -1 - (middle + 1 * (index.id < id));
+}
+
+
+Index get_index_by_id(char* file_name, int id){
+    Index index;
+
+    int offset = b_search(file_name, id);
+    if (offset < 0){
+        index.id = -1;
+        return index;
+    }
+
+    FILE* fp = fopen(file_name, "rb");
+    fseek(fp, (long) sizeof(Index) * offset, SEEK_SET);
+    fread(&index, sizeof(Index), 1, fp);
+    fclose(fp);
+
+    return index;
+}
 
 /*
 char path[64] = "run/tables/";

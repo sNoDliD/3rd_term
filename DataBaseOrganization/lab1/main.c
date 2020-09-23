@@ -28,6 +28,7 @@ int main()
 int main() {
     initTables();
     printHelp();
+    insert_m();
 
     return processCommands();
 }

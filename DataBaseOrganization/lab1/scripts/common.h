@@ -17,18 +17,15 @@ void create(const char* path){
 
 
 void initTables(){
-    mkdir("run", 0700);
-    mkdir("run/tables", 0700);
-
-    create("run/tables/students.ind");
-    create("run/tables/students.fl");
-    create("run/tables/groups.ind");
-    create("run/tables/groups.fl");
+    create("students.ind");
+    create("students.fl");
+    create("groups.ind");
+    create("groups.fl");
 }
 
 
 void printHelp() {
-    FILE* help_file = fopen("run/help.txt", "r");
+    FILE* help_file = fopen("help.txt", "r");
 
     if (help_file){
         char buff[255];
