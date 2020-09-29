@@ -35,6 +35,10 @@ def prefix(word: str) -> list:
             prefix_len = result[prefix_len-1]
 
         prefix_len = prefix_len + (word[prefix_len] == word[i])
+
+        if word[prefix_len] == word[i]:
+            prefix_len = prefix_len + 1
+
         result[i] = prefix_len
     return result
 

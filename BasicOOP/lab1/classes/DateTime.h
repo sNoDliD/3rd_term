@@ -31,6 +31,9 @@ public:
     int minutes = 0;
     int seconds = 0;
 
+    TimeClass(int year, int month, int day, int hours, int minutes, int seconds);
+    TimeClass(int year, int month, int day);
+    TimeClass() = default;
     std::size_t TotalDays() const;
     std::string ToString() const;
 };
@@ -42,6 +45,9 @@ class TimeDelta: TimeClass{
 class DateTime: TimeClass{
     bool IsCorrect() const;
     bool IsLeap() const;
+
+public:
+    DateTime(int i, int i1, int i2);
 };
 
 

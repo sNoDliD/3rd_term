@@ -24,6 +24,10 @@ bool DateTime::IsLeap() const {
     return (year % 400 == 0) or (year % 4 == 0 && year % 100 != 0);
 }
 
+DateTime::DateTime(int i, int i1, int i2) : TimeClass(i, i1, i2) {
+
+}
+
 
 std::string TimeClass::ToString() const {
     return std::to_string(day) + "." + std::to_string(month) + "." + std::to_string(year) +
@@ -35,8 +39,15 @@ bool operator<(TimeClass &first, TimeClass &second) {
            < std::tie(second.year, second.month, second.day, second.hours, second.minutes, second.seconds);
 }
 
-bool operator==(TimeClass& first, TimeClass& second) {
+bool operator==(TimeClass &first, TimeClass &second) {
     return std::tie(first.year, first.month, first.day, first.hours, first.minutes, first.seconds)
            == std::tie(second.year, second.month, second.day, second.hours, second.minutes, second.seconds);
 
 }
+
+TimeClass::TimeClass(int year, int month, int day, int hours, int minutes, int seconds)
+        : year(year), month(month), day(day), hours(hours), minutes(minutes), seconds(seconds) {}
+
+
+TimeClass::TimeClass(int year, int month, int day)
+        : year(year), month(month), day(day) {}
