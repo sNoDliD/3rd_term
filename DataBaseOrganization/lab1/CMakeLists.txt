@@ -3,4 +3,4 @@ project(lab1 C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(lab1 main.c scripts/index.h scripts/master.h scripts/slave.h scripts/common.h)
+add_executable(lab1 main.c)
