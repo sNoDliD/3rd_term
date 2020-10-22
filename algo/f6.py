@@ -4,7 +4,7 @@ def f6(first: str, second: str) -> bool:
     if len(first) != len(second):
         return False
 
-    return search_word(first * 2, second)
+    return search_word(second * 2, first)
 
 
 def search_word(text: str, word: str) -> bool:
@@ -35,10 +35,6 @@ def prefix(word: str) -> list:
             prefix_len = result[prefix_len-1]
 
         prefix_len = prefix_len + (word[prefix_len] == word[i])
-
-        if word[prefix_len] == word[i]:
-            prefix_len = prefix_len + 1
-
         result[i] = prefix_len
     return result
 
