@@ -14,14 +14,9 @@
  додавання чи віднімання такої різниці до заданого моменту часу. Обчислення дня тижня для заданої дати.
 +* за обчислення додаткових параметрів, наприклад, номер тижня в місяці та в році
 +* за альтернативні варіанти побудови дати та часу (наприклад, «перший вівторок листопада»)
-+* за підтримку часових зон
-+* за обчислення статистики, наприклад, на який день тижня найчастіше припадає 13 число (за даним діапазоном дат чи взагалі в календарі).
 */
-//year, month, day) and time (hours, minutes, seconds)
+
 class TimeClass{
-private:
-    friend bool operator <(TimeClass& left, TimeClass& right);
-    friend bool operator ==(TimeClass& left, TimeClass& right);
 public:
     int year = 0;
     int month = 0;
@@ -36,6 +31,10 @@ public:
     TimeClass() = default;
     std::size_t TotalDays() const;
     std::string ToString() const;
+
+    bool operator <(TimeClass& other) const;
+    bool operator ==(TimeClass& other) const;
+//     operator -(TimeClass& other) const;
 };
 
 class TimeDelta: TimeClass{
@@ -47,7 +46,9 @@ class DateTime: TimeClass{
     bool IsLeap() const;
 
 public:
-    DateTime(int i, int i1, int i2);
+    using TimeClass::TimeClass;
+    std::size_t week_in_month() const;
+    std::size_t week_in_year() const;
 };
 
 
