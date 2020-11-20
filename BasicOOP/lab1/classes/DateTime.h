@@ -1,7 +1,3 @@
-//
-// Created by dima on 27.09.20.
-//
-
 #ifndef LAB1_DATETIME_H
 #define LAB1_DATETIME_H
 
@@ -34,21 +30,24 @@ public:
 
     bool operator <(TimeClass& other) const;
     bool operator ==(TimeClass& other) const;
-//     operator -(TimeClass& other) const;
 };
 
-class TimeDelta: TimeClass{
-
+class TimeDelta: public TimeClass{
+    using TimeClass::TimeClass;
 };
 
-class DateTime: TimeClass{
+class DateTime: public TimeClass{
     bool IsCorrect() const;
     bool IsLeap() const;
-
+    void Correct();
 public:
     using TimeClass::TimeClass;
     std::size_t week_in_month() const;
     std::size_t week_in_year() const;
+    std::string Pretty() const;
+    TimeDelta operator -(TimeClass& other) const;
+    DateTime operator +(TimeDelta& other) const;
+    DateTime operator -(TimeDelta& other) const;
 };
 
 

@@ -1,12 +1,14 @@
 #include <iostream>
 #include "classes/DateTime.h"
-#include <vector>
-using namespace std;
+#include "tests.h"
 
 
 int main() {
-    DateTime a{1, 3, 4};
-    DateTime b;
+    DateTime a{2020, 11, 20};
+    DateTime b{2020, 11, 22};
+    auto x = a-b;
+
+    std::cout << (b+x).Pretty();
 
     return 0;
 }
